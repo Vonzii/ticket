@@ -9,13 +9,13 @@
               <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="39281FDJH008NM" />
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\lordv\.android\avd\Hurensohn.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-02-24T16:24:27.258783700Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-02-24T16:49:26.648122900Z" />
         </State>
       </entry>
     </value>

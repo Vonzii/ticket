@@ -3,5 +3,9 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
     </style>
+    <style name="RedButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/red</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
 </resources>

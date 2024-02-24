@@ -93,9 +93,9 @@ public class FragmentOne extends Fragment {
 
         String statusMessage;
         if (usernameExists && profileImageExists) {
-            statusMessage = "User Name and Profile Picture found. \n Sometimes, it says username found, but its not, just reenter the name for safety";
+            statusMessage = "User Name and Profile Picture found.";
         } else if (usernameExists) {
-            statusMessage = "User Name Found. Please add Profile Picture. \n Sometimes, it says username found, but its not, just reenter the name for safety";
+            statusMessage = "User Name Found. Please add Profile Picture.";
         } else if (profileImageExists) {
             statusMessage = "Profile Picture Found. Please add User Name.";
         } else {
