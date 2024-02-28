@@ -1,5 +1,6 @@
 package com.example.ticket;
 
+import android.animation.ObjectAnimator;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class FragmentTwo extends Fragment {
@@ -38,11 +40,16 @@ public class FragmentTwo extends Fragment {
             int minutes = seconds / 60;
             seconds = seconds % 60;
 
-            String startValid = generateStartValid();
-            startValidTopView.setText(startValid + " / " + String.format("%02d:%02d", minutes, seconds));
+            // Get the current date
+            LocalDate currentDate = LocalDate.now();
+            // Format the current date as day.month.year
+            String currentDay = currentDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+
+            startValidTopView.setText(currentDay + " / " + String.format("%02d:%02d", minutes, seconds));
             timerHandler.postDelayed(this, 1000);
         }
     };
+
 
     public FragmentTwo() {
     }
@@ -52,6 +59,7 @@ public class FragmentTwo extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_two, container, false);
 
+
         initializeBackgroundImage(view);
         initializeUsername(view);
         initializeTicketViews(view);
@@ -60,12 +68,13 @@ public class FragmentTwo extends Fragment {
         initializeTicketInfoView(view);
         initializeJGUView(view);
         initializeInformationView(view);
+        initializeFullSemester(view);
 
         return view;
     }
 
     private void initializeBackgroundImage(View view) {
-        ImageView imageView = view.findViewById(R.id.imageBehind);
+        ImageView imageView = view.findViewById(R.id.imageVerband);
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.translate);
         imageView.startAnimation(animation);
     }
@@ -84,8 +93,11 @@ public class FragmentTwo extends Fragment {
         ticketIdViewTop.setText(ticketId);
         ticketIdViewBot.setText("Ticket-ID:    " + ticketId);
 
-        String startValid = generateStartValid();
-        startValidBotView.setText("Gültig von: " + startValid);
+        // Get the current date
+        LocalDate currentDate = LocalDate.now();
+        // Format the current date as day.month.year
+        String currentDay = currentDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        startValidBotView.setText("Gültig von: " + currentDay);
 
         String endValid = generateEndValid();
         endValidBotView.setText("Gültig bis:  " + endValid);
@@ -146,7 +158,15 @@ public class FragmentTwo extends Fragment {
 
     private void initializeInformationView(View view) {
         TextView informationView = view.findViewById(R.id.information);
-        informationView.setText("Gültig auf allen Linien im Gesamten RMV Verbundnetz und VRN- Übergangstarifgebieten. Gültig auf allen Linien im Verbundnetz des...");
+        informationView.setText("Gültig auf allen Linien im Gesamten RMV Verbundnetz und VRN- Übergangstarifgebieten. " +
+                "Gültig auf allen Linien im Verbundnetz des RNN inkl. ÜB AzWo. KBS 471 (Nahverkehr bis Koblenz). Es gelten die gemeinsamend Beförderungsbedingungen und Tarifbestimmungen");
+    }
+
+    private void initializeFullSemester(View view) {
+        TextView fullSemesterView = view.findViewById(R.id.fullSemesterTime);
+        String start = generateStartValid();
+        String end = generateEndValid();
+        fullSemesterView.setText("Gesamtlaufzeit: " + start + " bis " + end);
     }
 
     private String generateTicketId() {
@@ -158,13 +178,13 @@ public class FragmentTwo extends Fragment {
             random = new Random(69);
             Log.d("yoo2", random.toString());
         }
-        String part1 = String.valueOf(random.nextInt(10)) + String.valueOf(random.nextInt(10));
-        String part2 = "";
-        for (int i = 0; i < 9; i++) {
-            part2 += String.valueOf(random.nextInt(10));
+
+        String matrikel = "";
+        for (int i = 0; i < 6; i++) {
+            matrikel += String.valueOf(random.nextInt(10));
         }
-        String part3 = String.valueOf(random.nextInt(10)) + String.valueOf(random.nextInt(10)) + String.valueOf(random.nextInt(10));
-        return part1 + " - " + part2 + " - " + part3;
+
+        return "01 - 2" + matrikel + " - 001";
     }
 
     private String generateStartValid() {
@@ -195,13 +215,29 @@ public class FragmentTwo extends Fragment {
 
     private String generateSemester() {
         LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
+        int nextYear = currentYear + 1; // Next year
+        int lastYear = currentYear - 1; // Previous year
+
+        // Extract the last two digits of the years
+        String lastTwoDigitsCurrentYear = String.valueOf(currentYear).substring(2);
+        String lastTwoDigitsNextYear = String.valueOf(nextYear).substring(2);
+        String lastTwoDigitsLastYear = String.valueOf(lastYear).substring(2);
+
+        // Determine the semester based on the current month
         if (isDateInRangeSummer(currentDate)) {
-            return "SoSe " + currentDate.getYear();
+            return "SoSe " + currentYear;
         } else {
-            int year = currentDate.getMonthValue() >= 10 ? currentDate.getYear() + 1 : currentDate.getYear();
-            return "WiSe " + year;
+            // If in October to December, format as "currentYear/nextYear"
+            if (currentDate.getMonthValue() >= 10) {
+                return "WiSe " + currentYear + "/" + lastTwoDigitsNextYear;
+            } else {
+                // Otherwise, format as "lastYear/currentYear"
+                return "WiSe " + lastYear + "/" + lastTwoDigitsCurrentYear;
+            }
         }
     }
+
 
     private void startTimer() {
         startTime = System.currentTimeMillis();

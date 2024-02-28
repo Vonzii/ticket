@@ -18,31 +18,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <FrameLayout
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:id="@+id/imageBehind"
-                        android:layout_width="match_parent"
+                        android:layout_width="105dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/rmv"
                         android:scaleType="fitStart"/>
 
+
                     <TextView
                         android:id="@+id/ticketIdTop"
                         android:textSize="18dp"
+                        android:paddingLeft="2dp"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical" />
+                        android:layout_height="wrap_content" />
 
-                </FrameLayout>
+                </LinearLayout>
+
                 <TextView
                     android:id="@+id/startValidTop"
                     android:textSize="18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
+
 
             <!-- Second LinearLayout -->
             <LinearLayout
@@ -132,6 +137,55 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
+
+            <!-- Seventh LinearLayout - FrameLayout with two ImageViews -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageVerband"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/rnnrmv"
+                        android:scaleType="fitStart"/>
+
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Eighth LinearLayout - Button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="2dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/dark_blue"
+                    android:textColor="@android:color/white"
+                    android:text="Studierendenausweis"/>
+            </LinearLayout>
+
+            <!-- Ninth LinearLayout - TextView -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fullSemesterTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"/>
+            </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>
