@@ -17,6 +17,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -26,7 +29,7 @@
 
                     <ImageView
                         android:id="@+id/imageBehind"
-                        android:layout_width="105dp"
+                        android:layout_width="90dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/rmv"
                         android:scaleType="fitStart"/>
@@ -51,6 +54,8 @@
 
             <!-- Second LinearLayout -->
             <LinearLayout
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
@@ -64,6 +69,8 @@
 
             <!-- Third LinearLayout -->
             <LinearLayout
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -80,6 +87,8 @@
 
             <!-- Fourth LinearLayout -->
             <LinearLayout
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
@@ -99,6 +108,8 @@
 
             <!-- Fifth LinearLayout -->
             <LinearLayout
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
@@ -127,6 +138,8 @@
 
             <!-- Sixth LinearLayout -->
             <LinearLayout
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
@@ -149,9 +162,9 @@
 
                     <ImageView
                         android:id="@+id/imageVerband"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/rnnrmv"
+                        android:layout_width="150dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/rnnrmvlogo"
                         android:scaleType="fitStart"/>
 
                 </FrameLayout>
@@ -159,6 +172,8 @@
 
             <!-- Eighth LinearLayout - Button -->
             <LinearLayout
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -169,7 +184,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/dark_blue"
                     android:textColor="@android:color/white"
-                    android:text="Studierendenausweis"/>
+                    android:text="Studierendenausweis"
+                    android:textAllCaps="false"/>
             </LinearLayout>
 
             <!-- Ninth LinearLayout - TextView -->
@@ -177,6 +193,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingBottom="10dp"
                 android:orientation="vertical">
 
                 <TextView

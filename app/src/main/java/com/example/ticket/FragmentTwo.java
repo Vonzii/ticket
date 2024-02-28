@@ -131,7 +131,7 @@ public class FragmentTwo extends Fragment {
                     //text.append("\n"); // Uncomment if multiline content is expected
                 }
                 userName = text.toString();
-                courseView.setText(text.toString() + " Semesterticket B Sc");
+                courseView.setText(text.toString());
             } catch (IOException e) {
                 Log.e("FragmentTwo", "Error reading username.txt", e);
             }
